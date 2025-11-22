@@ -116,23 +116,25 @@ for curr_i in dense_x:
     scriptF.append(F_i(A[ind], B[ind], C[ind], curr_i))
     pieceF.append(offset + scriptF[-1])
 
-# CHECK: plot graph
+# # CHECK: plot graph
 # plt.plot(dense_x,scriptF)
 # plt.axhline(0, color='black')
 # plt.title("Per Segment Quadrative Curves")
 # plt.xlabel("x")
 # plt.ylabel("Script F")
 # plt.show()  
-
-# CHECK: plot graph for piecewise CDF
-# plt.plot(dense_x,pieceF)
-# plt.axhline(0, color='black')
+#
+# # CHECK: plot graph for piecewise CDF
+# plt.plot(x, F, label="discrete CDF", marker="o")
+# plt.plot(dense_x, pieceF, label="continuous CDF")
+# plt.axhline(0, color="black")
 # plt.title("Piecewise CDF")
 # plt.xlabel("x")
 # plt.ylabel("F")
+# plt.legend()
 # plt.show()
-
-
+#
+#
 # ========================================================================================================
 # PART D
 # ========================================================================================================
@@ -150,7 +152,7 @@ for _ in range(N):
 
     # binary search for left-most segment index s.t. F(x_ind) > u
     ind = bisect.bisect_left(F, u) - 1
-    print(f"{ind=}")
+    print(f"{u=}, {ind=}")
 
     u_prime = u - F[ind]
     u_prime_list.append(u_prime)
